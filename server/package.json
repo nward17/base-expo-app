@@ -1,0 +1,25 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "tsc",
+        "postbuild": "xcopy config dist\\config /E /I /Y && xcopy package*.json dist /Y && cd dist && npm ci --production",
+        "dev": "cross-env NODE_ENV=dev ts-node-dev ./src/server.ts",
+        "prod": "NODE_ENV=prod pm2 start ./js/server.js"
+    },
+    "private": true,
+    "dependencies": {
+        "@supabase/supabase-js": "2.21.0",
+        "@types/express": "4.17.21",
+        "body-parser": "1.20.3",
+        "config": "3.3.9",
+        "express": "4.21.1",
+        "winston": "3.8.2"
+    },
+    "devDependencies": {
+        "cross-env": "7.0.3",
+        "ts-node": "10.9.1",
+        "ts-node-dev": "2.0.0",
+        "typescript": "4.8.4"
+    }
+}
